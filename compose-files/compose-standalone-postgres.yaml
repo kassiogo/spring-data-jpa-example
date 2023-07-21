@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  dbpostgres:
+    image: postgres:15.2
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=senha
+      - POSTGRES_HOST_AUTH_METHOD=scram-sha-256
+      - POSTGRES_DB=postgres
+    volumes:
+      - pgdb-data:/var/lib/postgresql/data
+
+volumes:
+  pgdb-data:

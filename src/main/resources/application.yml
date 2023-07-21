@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev, pgdb
+  sql:
+    init:
+      mode: never
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+app:
+  ddl-target-type: SCRIPT
