@@ -21,6 +21,7 @@ import com.kassiogo.siacon.exception.CountryNotFoundException;
 import com.kassiogo.siacon.model.Country;
 import com.kassiogo.siacon.service.CountryService;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -51,7 +52,7 @@ public class CountryController {
 	 */
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Mono<CountryDTO> save( @RequestBody CountryDTO dto ) {
+	public Mono<CountryDTO> save( @RequestBody @Valid CountryDTO dto ) {
 		var country = mapper.map(dto, Country.class);
 		country = service.save(country);
 		return Mono.just(mapper.map(country, CountryDTO.class));
